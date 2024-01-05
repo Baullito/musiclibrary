@@ -1,10 +1,14 @@
 [
     {
         "title": "Song1",
-        "artist": "Artist1"
+        "artist": "Artist1",
+        "album": "Album1",
+        "release": "2010"
     },
     {
         "title": "Song2",
-        "artist": "Artist2"
+        "artist": "Artist2",
+        "album": "Album2",
+        "release": "2012"
     }
 ]
