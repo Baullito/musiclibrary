@@ -61,10 +61,54 @@ int main() {
 
     file.close();
 
-    std::cout << "Einlesen der JSON-Datei erfolgreich.\n";
+    std::cout << "Einlesen der JSON-Datei erfolgreich.\n\n\n++++++\n";
+
+
+    //Menufuehrung
+
+    int choice = 0;
+    while (choice != 5)  {
+        std::cout << "1. Song bearbeiten\n";
+        std::cout << "2. Song-Metadaten bearbeiten\n";
+        std::cout << "3. Suchen\n";
+        std::cout << "4. Playlist/Favoriten\n";
+        std::cout << "5. Programm beenden\n";
+        std::cout << "Waehlen Sie eine Option: ";
+
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1:
+
+                break;
+
+            case 2:
+
+                break;
+
+            case 3:
+
+                break;
+
+            case 4:
+
+                break;
+
+            case 5:
+                std::cout << "Programm wird beendet und JSON-Datei gespeichert.\n";
+                break;
+
+            default:
+                std::cout << "*** Fehler! Ungueltige Option. Bitte erneut vesuchen. ***\n\n";
+                break;
+
+
+        }
 
 
 
+
+    }
 
 
     return 0;
