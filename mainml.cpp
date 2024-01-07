@@ -21,9 +21,58 @@ using json = nlohmann::json;
     };
 
 
+// Song Bibliothek
+
+class SongsLib {
+public:
+    std::vector<Song> songlist;
+
+
+    void addSong(const Song& song)  {
+        songlist.push_back(song);
+    }
+
+    void inputSong() {
+        std::string title;
+        std::string artist;
+        std::string album;
+        std::string release;
+
+        std::cout << "          Sie koennen nun einen neuen Song mit allen Metadaten angeben.\n";
+        std::cout << "          Titel des neuen Songs: ";
+        std::cin >> title;
+
+        std::cout << "          Kuenstler des neuen Songs: ";
+        std::cin >> artist;
+
+        std::cout << "          Album des neuen Songs: ";
+        std::cin >> album;
+
+        std::cout << "          Erscheinungsjahr des neuen Songs: ";
+        std::cin >> release;
+
+
+        Song song(title, artist, album, release);
+        addSong(song);
+
+
+    }
+
+};
+
+
+
+
+
+
 
 
 int main() {
+
+SongsLib musiclibrary;
+
+
+
 
 // Programmstart -> Einlesen JSON-Datei
 
@@ -61,13 +110,15 @@ int main() {
 
     file.close();
 
-    std::cout << "Einlesen der JSON-Datei erfolgreich.\n\n\n++++++\n";
+    std::cout << "Einlesen der JSON-Datei erfolgreich.\n\n\n++++++++++++++++++++\n";
 
 
     //Menufuehrung
 
     int choice = 0;
+    int choiceu1 = 0;
     while (choice != 5)  {
+        std::cout << "++++++++++++++++++++\n\n";
         std::cout << "1. Song bearbeiten\n";
         std::cout << "2. Song-Metadaten bearbeiten\n";
         std::cout << "3. Suchen\n";
@@ -76,9 +127,31 @@ int main() {
         std::cout << "Waehlen Sie eine Option: ";
 
         std::cin >> choice;
+        std::cout << "\n";
 
         switch (choice) {
             case 1:
+                std::cout << "          1. Song hinzufügen\n";
+                std::cout << "          2. Song entfernen\n";
+                std::cout << "          Waehlen Sie eine Option: ";
+                std::cin >> choiceu1;
+                //std::cout << "\n";
+
+                switch (choiceu1) {
+                    case 1:
+                        musiclibrary.inputSong();
+
+                        break;
+
+                    case 2:
+
+                        break;
+
+                    default:
+                        std::cout << "*** Fehler! Ungueltige Option. Bitte erneut vesuchen. ***\n\n\n\n++++++++++++++++++++\n";
+                        break;
+
+                }
 
                 break;
 
