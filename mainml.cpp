@@ -55,24 +55,28 @@ public:
         Song song(title, artist, album, release);
         addSong(song);
 
+        std::cout << "Der Song wurde hinzugefuegt.\n";
+    }
 
+
+    void deleteSong(std::string& title) {
+        for (std::vector<Song>::iterator i = songlist.begin(); i != songlist.end();) {
+            if ((*i).title == title) {
+                i = songlist.erase(i);
+            }
+            else {
+                i++;
+            }
+        }
+
+        std::cout << "Der Song wurde entfernt\n";
     }
 
 };
 
-
-
-
-
-
-
-
 int main() {
 
 SongsLib musiclibrary;
-
-
-
 
 // Programmstart -> Einlesen JSON-Datei
 
@@ -114,7 +118,7 @@ SongsLib musiclibrary;
 
 
     //Menufuehrung
-
+    std::string songtoremove;
     int choice = 0;
     int choiceu1 = 0;
     while (choice != 5)  {
@@ -135,7 +139,7 @@ SongsLib musiclibrary;
                 std::cout << "          2. Song entfernen\n";
                 std::cout << "          Waehlen Sie eine Option: ";
                 std::cin >> choiceu1;
-                //std::cout << "\n";
+                std::cout << "\n";
 
                 switch (choiceu1) {
                     case 1:
@@ -144,6 +148,9 @@ SongsLib musiclibrary;
                         break;
 
                     case 2:
+                        std::cout << "Um einen Song zu entfernen geben Sie den Title ein: ";
+                        std::cin >> songtoremove;
+                        musiclibrary.deleteSong(songtoremove);
 
                         break;
 
@@ -174,15 +181,7 @@ SongsLib musiclibrary;
             default:
                 std::cout << "*** Fehler! Ungueltige Option. Bitte erneut vesuchen. ***\n\n";
                 break;
-
-
         }
-
-
-
-
     }
-
-
     return 0;
 }
