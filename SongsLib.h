@@ -11,6 +11,10 @@ public:
     void addSong(const Song& song);
     void inputSong();
     void deleteSong(std::string& title);
+    void searchBySong(std::string& title);
+    void searchByArtist(std::string& artist);
+    void searchByAlbum(std::string& album);
+    void searchByRelease(std::string& release);
 
 
 };
