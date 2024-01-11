@@ -161,3 +161,30 @@ void SongsLib::searchByRelease(std::string& release) {
     }
 
 }
+
+
+void SongsLib::modifyMeta() {
+    std::string title;
+    std::cout << "          Geben Sie den Titel des Songs ein, den Sie bearbeiten möchten: ";
+    std::cin >> title;
+
+    for (Song& song : songlist) {
+        if (song.title == title) {
+            std::cout << "\n          Song gefunden! Geben Sie die neuen Metadaten ein.\n";
+
+            std::cout << "          + Neuer Kuenstler: ";
+            std::cin >> song.artist;
+
+            std::cout << "          + Neues Album: ";
+            std::cin >> song.album;
+
+            std::cout << "          + Neues Erscheinungsjahr: ";
+            std::cin >> song.release;
+
+            std::cout << "\n          Die Songdaten wurden erfolgreich aktualisiert.\n\n";
+            return;
+        }
+    }
+
+    std::cout << "          Der Song konnte nicht gefunden werden.\n\n";
+}

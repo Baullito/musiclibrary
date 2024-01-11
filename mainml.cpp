@@ -102,6 +102,7 @@ SongsLib musiclibrary;
                 break;
 
             case 2:     //Menuepunkt 2 -> Nach Metadaten suchen
+                musiclibrary.modifyMeta();
 
                 break;
 

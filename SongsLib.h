@@ -15,6 +15,7 @@ public:
     void searchByArtist(std::string& artist);
     void searchByAlbum(std::string& album);
     void searchByRelease(std::string& release);
+    void modifyMeta();
 
 
 };
