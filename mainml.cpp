@@ -1,78 +1,12 @@
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
+#include "SongsLib.h"
 #include "json.hpp"
 
 
 using json = nlohmann::json;
 
-//Song Klasse
-    class Song {
-    public:
-        std::string title;
-        std::string artist;
-        std::string album;
-        std::string release;
-
-        Song(std::string songTitle, std::string songArtist, std::string songAlbum, std::string songRelease) : title(songTitle), artist(songArtist), album(songAlbum), release(songRelease)  {}
-
-
-
-    };
-
-
-// Song Bibliothek
-
-class SongsLib {
-public:
-    std::vector<Song> songlist;
-
-
-    void addSong(const Song& song)  {
-        songlist.push_back(song);
-    }
-
-    void inputSong() {
-        std::string title;
-        std::string artist;
-        std::string album;
-        std::string release;
-
-        std::cout << "          Sie koennen nun einen neuen Song mit allen Metadaten angeben.\n";
-        std::cout << "          Titel des neuen Songs: ";
-        std::cin >> title;
-
-        std::cout << "          Kuenstler des neuen Songs: ";
-        std::cin >> artist;
-
-        std::cout << "          Album des neuen Songs: ";
-        std::cin >> album;
-
-        std::cout << "          Erscheinungsjahr des neuen Songs: ";
-        std::cin >> release;
-
-
-        Song song(title, artist, album, release);
-        addSong(song);
-
-        std::cout << "Der Song wurde hinzugefuegt.\n";
-    }
-
-
-    void deleteSong(std::string& title) {
-        for (std::vector<Song>::iterator i = songlist.begin(); i != songlist.end();) {
-            if ((*i).title == title) {
-                i = songlist.erase(i);
-            }
-            else {
-                i++;
-            }
-        }
-
-        std::cout << "Der Song wurde entfernt\n";
-    }
-
-};
 
 int main() {
 
