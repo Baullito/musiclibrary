@@ -61,7 +61,6 @@ void SongsLib::deleteSong(std::string& title) {
         }
 }
 
-
 void SongsLib::searchBySong(std::string& title) {
     bool existence = false;
 
@@ -162,7 +161,6 @@ void SongsLib::searchByRelease(std::string& release) {
 
 }
 
-
 void SongsLib::modifyMeta() {
     std::string title;
     std::cout << "          Geben Sie den Titel des Songs ein, den Sie bearbeiten möchten: ";
@@ -187,4 +185,8 @@ void SongsLib::modifyMeta() {
     }
 
     std::cout << "          Der Song konnte nicht gefunden werden.\n\n";
+}
+
+const std::vector<Song>& SongsLib::outputSongs() const {
+    return songlist;
 }

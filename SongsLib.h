@@ -17,6 +17,6 @@ public:
     void searchByRelease(std::string& release);
     void modifyMeta();
 
-
+    const std::vector<Song>& outputSongs() const;
 };
 #endif

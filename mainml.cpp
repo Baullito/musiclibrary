@@ -4,7 +4,10 @@
 #include "SongsLib.h"
 #include "json.hpp"
 
-
+/*INFO: // Inhalt dieser Beispiel JSON Datei ist komplett KI generiert.
+Der genutzte prompt für Chat-GPT4 war:
+    'Erstelle mir eine formatierte JSON Datei mit 30 Song Beispielen. Es sollen auch mehrere Songs eines Beispielkünstlers vorkommen, sowie Songs eines Besipielkünstlers im gleichen Beispielalbum vorkommen.'
+*/
 using json = nlohmann::json;
 
 
@@ -22,7 +25,7 @@ SongsLib musiclibrary;
 
     std::ifstream file(songfile);
 
-    if (!file.is_open()) {
+    if (file.is_open() == false) {
 
         std::cout << "*** Fehler! Die Datei kann nicht geöffnet werden.\nDas Programm wird beendet. ***\n\n\n";
 
@@ -31,12 +34,12 @@ SongsLib musiclibrary;
         return 1;
     }
 
-    json ml;
-    file >> ml;
+    json inputML;
+    file >> inputML;
 
     //Erstellen von Song-Objekten aus JSON-Datei
 
-    for (auto& element: ml) {
+    for (auto& element: inputML) {
 
         std::string title = element["title"];
         std::string artist = element["artist"];
@@ -59,13 +62,18 @@ SongsLib musiclibrary;
     int choiceMain = 0;
     int choiceSub = 0;
 
+    json outputML;
+    json songObJson;
+
+    std::ofstream outFile(songfile);
+
 
     while (choiceMain != 5)  {
         std::cout << "++++++++++++++++++++\n\n";
         std::cout << "1. Song bearbeiten\n";
         std::cout << "2. Song-Metadaten bearbeiten\n";
         std::cout << "3. Suchen\n";
-        std::cout << "4. Playlist/Favoriten\n";
+        std::cout << "4. Playlist/Favoriten(work in progress)\n";
         std::cout << "5. Programm beenden\n";
         std::cout << "Waehlen Sie eine Option: ";
 
@@ -151,12 +159,28 @@ SongsLib musiclibrary;
                 }
                 break;
 
+
             case 4:     //Menuepunkt 4 -> Playlists/Favoriten
 
                 break;
 
             case 5:
                 std::cout << "Programm wird beendet und JSON-Datei gespeichert.\n";
+
+                for (const Song& songiter : musiclibrary.outputSongs()) {
+                    songObJson["title"] = songiter.getTitle();
+                    songObJson["artist"] = songiter.getArtist();
+                    songObJson["album"] = songiter.getAlbum();
+                    songObJson["release"] = songiter.getRelease();
+
+                    outputML.push_back(songObJson);
+
+                }
+
+
+                outFile << outputML.dump(4);
+                outFile.close();
+
                 break;
 
             default:
