@@ -10,8 +10,8 @@ Dieses Programm verwaltet eine Musikbibliothek. Es ermöglicht das Hinzufügen u
 
 **Menüführung:** Das Programm bietet verschiedene Optionen zur Interaktion mit der Musikbibliothek:
 
-**Song bearbeiten:** Sie können einen Song zur Bibliothek hinzufügen oder einen Song aus der Bibliothek entfernen.
-**Song-Metadaten bearbeiten:** Sie können die Metadaten eines Songs in der Bibliothek ändern.
-**Suchen:** Sie können die Bibliothek nach einem Song, Künstler, Album oder Erscheinungsjahr durchsuchen.
-**Playlist/Favoriten:** Diese Funktion ist derzeit in Arbeit.
-**Programm beenden:** Beendet das Programm und speichert die aktuelle Musikbibliothek in der JSON-Datei.
+**Song bearbeiten:** Sie können einen Song zur Bibliothek hinzufügen oder einen Song aus der Bibliothek entfernen.  
+**Song-Metadaten bearbeiten:** Sie können die Metadaten eines Songs in der Bibliothek ändern.  
+**Suchen:** Sie können die Bibliothek nach einem Song, Künstler, Album oder Erscheinungsjahr durchsuchen.  
+**Playlist/Favoriten:** Diese Funktion ist derzeit in Arbeit.  
+**Programm beenden:** Beendet das Programm und speichert die aktuelle Musikbibliothek in der JSON-Datei.  
