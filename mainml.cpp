@@ -7,6 +7,9 @@
 /*INFO: // Inhalt dieser Beispiel JSON Datei ist komplett KI generiert.
 Der genutzte prompt für Chat-GPT4 war:
     'Erstelle mir eine formatierte JSON Datei mit 30 Song Beispielen. Es sollen auch mehrere Songs eines Beispielkünstlers vorkommen, sowie Songs eines Besipielkünstlers im gleichen Beispielalbum vorkommen.'
+
+Hinweis! Compilerbefehl: g++ -o mainml mainml.cpp SongsLib.cpp Song.cpp
+Ausführen: ./mainml
 */
 using json = nlohmann::json;
 
@@ -79,6 +82,15 @@ SongsLib musiclibrary;
 
         std::cin >> choiceMain;
         std::cout << "\n";
+
+        //Menuefuehrung -> Eingabefehler Endlosschleife
+        if (std::cin.fail()) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+            std::cout << "*** Fehler! Ungueltige Option. Bitte erneut vesuchen. ***\n";
+        }
+        else {
 
         switch (choiceMain) {
             case 1:     //Menuepunkt 1 -> Song bearbeiten
@@ -186,6 +198,7 @@ SongsLib musiclibrary;
             default:
                 std::cout << "*** Fehler! Ungueltige Option. Bitte erneut vesuchen. ***\n\n";
                 break;
+        }
         }
     }
     return 0;

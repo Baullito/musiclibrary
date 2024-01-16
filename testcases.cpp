@@ -7,6 +7,7 @@
 using json = nlohmann::json;
 
 //Hinweis! Compilerbefehl: g++ -o testProgramm testcases.cpp SongsLib.cpp Song.cpp
+//Ausführen: ./testProgramm
 
 TEST_CASE("Laden der Songdaten aus der JSON Datei", "[JSONtoC++]") {
     //Test anhand test JSON Datei
@@ -87,11 +88,12 @@ TEST_CASE("Testen der Künstlersuchfunktion", "[Search]") {
     Song testSong("testtitle",testArtist,"testalbum","testrelease");
 
     testMusicLibrary.addSong(testSong);
-    REQUIRE(testMusicLibrary.searchByArtist(testArtist) == true);
+    REQUIRE(testMusicLibrary.searchByArtist(testArtist) > 0);
 
     std::string nonexistTestFile = "nonexistent";
-    REQUIRE(testMusicLibrary.searchByArtist(nonexistTestFile) == false);
+    REQUIRE(testMusicLibrary.searchByArtist(nonexistTestFile) == 0);
 }
+
 
 TEST_CASE("Testen der Albumsuchfunktion", "[Search]") {
     SongsLib testMusicLibrary;
@@ -99,10 +101,10 @@ TEST_CASE("Testen der Albumsuchfunktion", "[Search]") {
     Song testSong("testtitle","testartist",testAlbum,"testrelease");
 
     testMusicLibrary.addSong(testSong);
-    REQUIRE(testMusicLibrary.searchByAlbum(testAlbum) == true);
+    REQUIRE(testMusicLibrary.searchByAlbum(testAlbum) > 0);
 
     std::string nonexistTestFile = "nonexistent";
-    REQUIRE(testMusicLibrary.searchByAlbum(nonexistTestFile) == false);
+    REQUIRE(testMusicLibrary.searchByAlbum(nonexistTestFile) == 0);
 }
 
 TEST_CASE("Testen der Releasesuchfunktion", "[Search]") {
@@ -111,8 +113,9 @@ TEST_CASE("Testen der Releasesuchfunktion", "[Search]") {
     Song testSong("testtitle","testartist","testalbum",testRelease);
 
     testMusicLibrary.addSong(testSong);
-    REQUIRE(testMusicLibrary.searchByRelease(testRelease) == true);
+    REQUIRE(testMusicLibrary.searchByRelease(testRelease) > 0);
 
     std::string nonexistTestFile = "nonexistent";
-    REQUIRE(testMusicLibrary.searchByRelease(nonexistTestFile) == false);
+    REQUIRE(testMusicLibrary.searchByRelease(nonexistTestFile) == 0);
 }
+

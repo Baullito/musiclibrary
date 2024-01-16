@@ -76,73 +76,73 @@ bool SongsLib::searchBySong(std::string& title) {
     return false;
 }
 
-bool SongsLib::searchByArtist(std::string& artist) {
-    bool InfoPrinted = false;
+int SongsLib::searchByArtist(std::string& artist) {
+    int count = 0;
     for (const Song& song : songlist) {
         if (song.artist == artist) {
-            if (InfoPrinted == false) {
+            if (count == 0) {
                 std::cout << "\n          -> Kuenstler gefunden! Es werden alle Songs des Kuenstlers als Suchergebnis angezeigt: \n\n";
-                InfoPrinted = true;
             }
 
             std::cout << "      +++++++\n          Titel: " << song.title << "\n";
             std::cout << "          Kuenstler: " << song.artist << "\n";
             std::cout << "          Album: " << song.album<< "\n";
             std::cout << "          Erscheinungsjahr: " << song.release << "\n\n";
-            return true;
+            count++;
         }
     }
 
-
-    std::cout << "          Der Kuenstler konnte nicht gefunden werden.\n";
-    return false;
-
+    if (count == 0) {
+        std::cout << "          Der Kuenstler konnte nicht gefunden werden.\n";
+    }
+    return count;
 }
 
-bool SongsLib::searchByAlbum(std::string& album) {
-    bool InfoPrinted = false;
+
+int SongsLib::searchByAlbum(std::string& album) {
+    int count = 0;
     for (const Song& song : songlist) {
         if (song.album == album) {
-            if (InfoPrinted == false) {
+            if (count == 0) {
                 std::cout << "\n          -> Album gefunden! Es werden alle Songs des Albums als Suchergebnis angezeigt: \n\n";
-                InfoPrinted = true;
             }
 
             std::cout << "      +++++++\n          Titel: " << song.title << "\n";
             std::cout << "          Kuenstler: " << song.artist << "\n";
             std::cout << "          Album: " << song.album<< "\n";
             std::cout << "          Erscheinungsjahr: " << song.release << "\n\n";
-            return true;
+            count++;
         }
     }
 
-
-    std::cout << "          Das Album konnte nicht gefunden werden.\n";
-    return false;
-
+    if (count == 0) {
+        std::cout << "          Das Album konnte nicht gefunden werden.\n";
+    }
+    return count;
 }
 
-bool SongsLib::searchByRelease(std::string& release) {
-    bool InfoPrinted = false;
-
+int SongsLib::searchByRelease(std::string& release) {
+    int count = 0;
     for (const Song& song : songlist) {
         if (song.release == release) {
-            if (InfoPrinted == false) {
+            if (count == 0) {
                 std::cout << "\n          -> Songs aus diesem Erscheinungsjahr gefunden! Es werden alle Songs aus diesem Jahr als Suchergebnis angezeigt: \n\n";
-                InfoPrinted = true;
             }
 
             std::cout << "      +++++++\n          Titel: " << song.title << "\n";
             std::cout << "          Kuenstler: " << song.artist << "\n";
             std::cout << "          Album: " << song.album<< "\n";
             std::cout << "          Erscheinungsjahr: " << song.release << "\n\n";
-            return true;
+            count++;
         }
     }
-    std::cout << "          Es konnten keine Songs aus diesem Jahr gefunden werden.\n";
-    return false;
 
+    if (count == 0) {
+        std::cout << "          Es konnten keine Songs aus diesem Jahr gefunden werden.\n";
+    }
+    return count;
 }
+
 
 void SongsLib::modifyMeta() {
     std::string title;

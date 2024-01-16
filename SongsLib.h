@@ -13,9 +13,9 @@ public:
     void deleteSong(std::string& title);
     void deleteSongSingle(std::string& title);
     bool searchBySong(std::string& title);
-    bool searchByArtist(std::string& artist);
-    bool searchByAlbum(std::string& album);
-    bool searchByRelease(std::string& release);
+    int searchByArtist(std::string& artist);
+    int searchByAlbum(std::string& album);
+    int searchByRelease(std::string& release);
     void modifyMeta();
 
     const std::vector<Song>& outputSongs() const;
